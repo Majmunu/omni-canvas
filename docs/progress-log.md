@@ -263,3 +263,12 @@
 - commit hash：0d49cab
 - 下一步：CE-004 Task 5（最小 asserts + re-export，尽量跑 npm run check）
 - 风险 / 阻塞：无
+
+## 2026-03-10 15:01:55 CST
+- 当前阶段：execute (CE-004)
+- 完成事项：完成 CE-004 Task 5（新增 core asserts：assertNever/isRecord；补齐 src/core/* index re-export；npm run check 通过）
+- 对应 task / issue：CE-004 / Task 5 / ISS-20260310-004
+- 验收：npm run check 通过
+- commit hash：40d5407
+- 下一步：更新 CCW issue 状态为 completed，并按 queue-manifest 进入 CE-005
+- 风险 / 阻塞：无
