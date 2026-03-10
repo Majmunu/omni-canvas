@@ -26,7 +26,11 @@ export function addNode(document: SavedDocument, args: AddNodeArgs): SavedDocume
       ? parentChildren.length
       : Math.min(Math.max(args.index, 0), parentChildren.length)
 
-  const nextChildren = parentChildren.toSpliced(insertAt, 0, node.id)
+  const nextChildren = [
+    ...parentChildren.slice(0, insertAt),
+    node.id,
+    ...parentChildren.slice(insertAt),
+  ]
 
   const nextChildrenMap: ChildrenMap = {
     ...document.childrenMap,
@@ -98,24 +102,20 @@ export function removeNode(document: SavedDocument, args: RemoveNodeArgs): Saved
 
   const toDelete = new Set<NodeId>(collectSubtree(document.childrenMap, nodeId))
 
-  let nextChildrenMap = removeIdFromAllParents(document.childrenMap, nodeId)
+  const nextChildrenMap = removeIdFromAllParents(document.childrenMap, nodeId)
 
   // remove childrenMap entries for deleted nodes
   for (const id of toDelete) {
-    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete nextChildrenMap[id]
   }
 
   const nextNodes = { ...document.nodes }
   for (const id of toDelete) {
-    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
     delete nextNodes[id]
   }
 
   // also remove any references to deleted nodes that might exist (best-effort)
-  for (const [parentId, children] of Object.entries(nextChildrenMap) as Array<
-    [NodeId, NodeId[]]
-  >) {
+  for (const [parentId, children] of Object.entries(nextChildrenMap) as Array<[NodeId, NodeId[]]>) {
     nextChildrenMap[parentId] = children.filter((id) => !toDelete.has(id))
   }
 
