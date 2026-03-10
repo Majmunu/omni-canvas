@@ -42,3 +42,11 @@
 - commit hash：N/A（队列与 solutions 尚未纳入 git 提交策略）
 - 下一步：为每个 CE issue 生成对应 issue 记录与 solution，然后按最短闭环加入队列；或先用一个“Queue Manifest”文档固化队列顺序
 - 风险/阻塞：ccw issue queue add 在无 TTY/交互场景触发 inquirer 报错 ERR_USE_AFTER_CLOSE，但队列文件已写入成功
+
+## 2026-03-10 10:37:47 CST
+- 当前阶段：queue-manifest
+- 完成事项：生成并提交 docs/queue-manifest.md（最短闭环主线 + 并行波次）
+- 对应 task/issue：规划阶段 / queue-manifest
+- commit hash：3426858
+- 下一步：以“1 CE = 1 issue”创建 CE issues（ccw issue create）并为每个 issue 创建 solution+bind；按 queue-manifest 线性序列入队
+- 风险/阻塞：ccw issue queue add 可能触发交互提示导致报错，需探索非交互参数或直接落库后校验
