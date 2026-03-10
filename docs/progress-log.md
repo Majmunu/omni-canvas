@@ -18,3 +18,11 @@
 - commit hash：d0dd7da
 - 下一步：生成 issue 计划并初始化 CCW issue 存储（ccw issue create/bind/queue）
 - 风险/阻塞：claude 执行两次 SIGTERM；本次改用 codex 通过 CCW 成功
+
+## 2026-03-10 10:22:13 CST
+- 当前阶段：issue-plan
+- 完成事项：使用 CCW+Codex 生成 issue plan（docs/issue-plan.md），stderr 单独存放
+- 对应 task/issue：规划阶段 / issue-plan
+- commit hash：N/A（待审查修订后提交）
+- 下一步：修订 issue-plan（去掉“已分析文件”段，确保与 workflow-plan Issue Drafts 对齐）-> 提交 -> 用 ccw issue v3 create/init 写入 .workflow/issues
+- 风险/阻塞：issue-plan 误判 workflow-plan 不含 Issue Drafts（需纠正提示词/引用范围）
