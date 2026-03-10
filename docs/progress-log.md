@@ -227,3 +227,12 @@
 - commit hash：0807190
 - 下一步：CE-004 Task 1（core id types）
 - 风险 / 阻塞：codex 生成 runbook 两次 SIGTERM，已改为人工落盘；后续实现仍可继续用 codex
+
+## 2026-03-10 14:55:17 CST
+- 当前阶段：execute (CE-004)
+- 完成事项：完成 CE-004 Task 1（新增 core id branded types：NodeId/ComponentId；提供 asNodeId/asComponentId；新增 src/core/index.ts re-export）
+- 对应 task / issue：CE-004 / Task 1 / ISS-20260310-004
+- 验收：npm run typecheck 通过
+- commit hash：ab6acaf
+- 下一步：CE-004 Task 2（定义 Node DTO）
+- 风险 / 阻塞：无
