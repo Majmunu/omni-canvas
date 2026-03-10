@@ -58,3 +58,11 @@
 - commit hash：N/A（运行态不提交，仅 docs 记录）
 - 下一步：批量导入剩余 31 个 CE issues；然后按 queue-manifest 线性序列把主线 CE 加入队列
 - 风险 / 阻塞：queue add 可能触发交互提示导致报错；必要时仅用 docs/queue-manifest 驱动 next/done，不依赖 queue add
+
+## 2026-03-10 10:49:39 CST
+- 当前阶段：issue-import
+- 完成事项：批量创建并绑定剩余 31 个 CE issues（1 CE = 1 issue），已生成映射表 .tmp_ce_issue_ids.tsv
+- 对应 task / issue：CE-002..CE-034（除已创建样例 CE-001/CE-004/CE-009）
+- commit hash：N/A（运行态不提交；映射表为临时文件）
+- 下一步：补齐 CE-001/CE-004/CE-009 的 issue id 映射，生成 docs/issue-registry.md（CE->ISS/SOL 对照表，便于人工审阅），并提交；然后按 docs/queue-manifest.md 生成 docs/queue-runbook.md 并进入第一条执行（CE-001）
+- 风险 / 阻塞：ccw issue queue add 在非交互环境可能报错；我们将用 docs/queue-manifest.md 作为唯一队列真相，必要时绕开 queue add
