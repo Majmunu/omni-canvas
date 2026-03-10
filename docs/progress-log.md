@@ -245,3 +245,12 @@
 - commit hash：b72d903
 - 下一步：CE-004 Task 3（定义 ChildrenMap）
 - 风险 / 阻塞：codex 任务再次 SIGTERM，已手工落地避免阻塞
+
+## 2026-03-10 15:01:04 CST
+- 当前阶段：execute (CE-004)
+- 完成事项：完成 CE-004 Task 3（定义 ChildrenMap：层级真相=children 顺序；不使用 zIndex）
+- 对应 task / issue：CE-004 / Task 3 / ISS-20260310-004
+- 验收：npm run typecheck 通过
+- commit hash：f726824
+- 下一步：CE-004 Task 4（定义 SavedDocument）
+- 风险 / 阻塞：无
