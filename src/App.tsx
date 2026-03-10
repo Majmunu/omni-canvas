@@ -7,7 +7,9 @@ function App() {
   return (
     <main>
       <h1>Zero Code Canvas Explore</h1>
-      <p>Counter: {counter}</p>
+      <p>
+        Counter: <span data-testid="counter">{counter}</span>
+      </p>
       <button type="button" onClick={inc}>
         +1
       </button>
