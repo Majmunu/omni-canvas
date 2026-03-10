@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import type { NodeDTO } from '../../dto/node'
 import { asComponentId, asNodeId } from '../../types/id'
 import { createEmptyDocument } from '../document'
-import { addNode, removeNode } from '../ops'
+import { addNode, moveNode, removeNode } from '../ops'
 
 describe('core/model/ops', () => {
   it('addNode appends to parent children by default and creates empty children list for new node', () => {
@@ -52,5 +52,68 @@ describe('core/model/ops', () => {
     expect(next.nodes[child.id]).toBeUndefined()
     expect(next.childrenMap[rootId]).toEqual([])
     expect(next.childrenMap[parent.id]).toBeUndefined()
+  })
+
+  it('moveNode reorders within the same parent', () => {
+    const doc = createEmptyDocument()
+    const rootId = doc.rootId
+
+    const a: NodeDTO = { id: asNodeId('a'), type: asComponentId('Box'), props: {} }
+    const b: NodeDTO = { id: asNodeId('b'), type: asComponentId('Box'), props: {} }
+
+    const withA = addNode(doc, { parentId: rootId, node: a })
+    const withAB = addNode(withA, { parentId: rootId, node: b })
+
+    const moved = moveNode(withAB, {
+      nodeId: a.id,
+      fromParentId: rootId,
+      toParentId: rootId,
+      toIndex: 1,
+    })
+
+    expect(moved.childrenMap[rootId]).toEqual([b.id, a.id])
+  })
+
+  it('moveNode moves across parents', () => {
+    const doc = createEmptyDocument()
+    const rootId = doc.rootId
+
+    const p1: NodeDTO = { id: asNodeId('p1'), type: asComponentId('Box'), props: {} }
+    const p2: NodeDTO = { id: asNodeId('p2'), type: asComponentId('Box'), props: {} }
+    const c: NodeDTO = { id: asNodeId('c'), type: asComponentId('Box'), props: {} }
+
+    const withP1 = addNode(doc, { parentId: rootId, node: p1 })
+    const withP12 = addNode(withP1, { parentId: rootId, node: p2 })
+    const withC = addNode(withP12, { parentId: p1.id, node: c })
+
+    const moved = moveNode(withC, {
+      nodeId: c.id,
+      fromParentId: p1.id,
+      toParentId: p2.id,
+      toIndex: 0,
+    })
+
+    expect(moved.childrenMap[p1.id]).toEqual([])
+    expect(moved.childrenMap[p2.id]).toEqual([c.id])
+  })
+
+  it('moveNode rejects moving into its own subtree', () => {
+    const doc = createEmptyDocument()
+    const rootId = doc.rootId
+
+    const p: NodeDTO = { id: asNodeId('p'), type: asComponentId('Box'), props: {} }
+    const c: NodeDTO = { id: asNodeId('c'), type: asComponentId('Box'), props: {} }
+
+    const withP = addNode(doc, { parentId: rootId, node: p })
+    const withPC = addNode(withP, { parentId: p.id, node: c })
+
+    expect(() =>
+      moveNode(withPC, {
+        nodeId: p.id,
+        fromParentId: rootId,
+        toParentId: c.id,
+        toIndex: 0,
+      })
+    ).toThrow(/subtree/)
   })
 })

@@ -125,3 +125,77 @@ export function removeNode(document: SavedDocument, args: RemoveNodeArgs): Saved
     childrenMap: nextChildrenMap,
   }
 }
+
+export interface MoveNodeArgs {
+  nodeId: NodeId
+  fromParentId: NodeId
+  toParentId: NodeId
+  toIndex: number
+}
+
+function containsInSubtree(childrenMap: ChildrenMap, root: NodeId, target: NodeId): boolean {
+  const stack: NodeId[] = [root]
+
+  while (stack.length > 0) {
+    const current = stack.pop() as NodeId
+    if (current === target) return true
+
+    const children = childrenMap[current] ?? []
+    for (const childId of children) {
+      stack.push(childId)
+    }
+  }
+
+  return false
+}
+
+export function moveNode(document: SavedDocument, args: MoveNodeArgs): SavedDocument {
+  const { nodeId, fromParentId, toParentId, toIndex } = args
+
+  if (nodeId === document.rootId) {
+    throw new Error('moveNode: cannot move root node')
+  }
+
+  if (!document.nodes[nodeId]) {
+    throw new Error(`moveNode: nodeId ${nodeId} must exist in nodes`)
+  }
+
+  if (!document.nodes[fromParentId]) {
+    throw new Error(`moveNode: fromParentId ${fromParentId} must exist in nodes`)
+  }
+
+  if (!document.nodes[toParentId]) {
+    throw new Error(`moveNode: toParentId ${toParentId} must exist in nodes`)
+  }
+
+  if (containsInSubtree(document.childrenMap, nodeId, toParentId)) {
+    throw new Error('moveNode: cannot move node into its own subtree')
+  }
+
+  const fromChildren = document.childrenMap[fromParentId] ?? []
+  if (!fromChildren.includes(nodeId)) {
+    throw new Error(`moveNode: fromParentId ${fromParentId} does not contain nodeId ${nodeId}`)
+  }
+
+  const nextFromChildren = fromChildren.filter((id) => id !== nodeId)
+
+  const toChildrenOriginal = document.childrenMap[toParentId] ?? []
+
+  const baseToChildren = fromParentId === toParentId ? nextFromChildren : [...toChildrenOriginal]
+
+  const insertAt = Math.min(Math.max(toIndex, 0), baseToChildren.length)
+  const nextToChildren = [
+    ...baseToChildren.slice(0, insertAt),
+    nodeId,
+    ...baseToChildren.slice(insertAt),
+  ]
+
+  return {
+    ...document,
+    childrenMap: {
+      ...document.childrenMap,
+      [fromParentId]: nextFromChildren,
+      [toParentId]: nextToChildren,
+    },
+  }
+}
