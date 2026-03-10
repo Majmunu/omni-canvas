@@ -4,3 +4,8 @@ coverage
 node_modules
 package-lock.json
 *.min.js
+.ccw
+.workflow
+docs
+.tmp_*
+UPGRADE_NOTES.md
