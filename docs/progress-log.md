@@ -396,3 +396,12 @@
 - commit hash：c9585d6
 - 下一步：CE-006 Task 4（selectors + 最小 UI wiring 到 EditorShell）
 - 风险 / 阻塞：无
+
+## 2026-03-10 17:56:31 CST
+- 当前阶段：execute (CE-006)
+- 完成事项：完成 CE-006 Task 4（selectors + 最小 UI wiring：App 从 store 读取 rootId 并展示为 debug 信息）
+- 对应 task / issue：CE-006 / Task 4 / ISS-20260310-009
+- 验收：npm run check 通过
+- commit hash：9593032
+- 下一步：CE-006 Task 5（为 store 写最小单测或类型层 smoke tests；随后 completion + ccw issue completed）
+- 风险 / 阻塞：无
