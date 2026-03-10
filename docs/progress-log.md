@@ -106,3 +106,11 @@
 - commit hash：0a53d0c
 - 下一步：CE-001 Task 4（ESLint/Prettier/基础质量基线）
 - 风险 / 阻塞：上次 npm 安装曾遇到瞬时 DNS EAI_AGAIN；当前已恢复
+
+## 2026-03-10 11:51:39 CST
+- 当前阶段：execute (CE-001)
+- 完成事项：完成 CE-001 Task 4（ESLint+Prettier 基线脚本/忽略范围/格式修复），已提交；并纠正提交信息（amend）
+- 对应 task / issue：CE-001 / Task 4 / ISS-20260310-003
+- commit hash：08cebd0
+- 下一步：CE-001 Task 5（测试基线：Vitest + React Testing Library 最小用例）
+- 风险 / 阻塞：`rg` 不存在导致我无法用 ripgrep 快速审阅，但不影响执行；需防止 format:check 扫到 docs 大文件
