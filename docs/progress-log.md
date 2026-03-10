@@ -139,3 +139,12 @@
 - commit hash：3b4120f
 - 下一步：CE-001 Task 8（基础 logger，与 ErrorBoundary 联动）
 - 风险 / 阻塞：不要在 Task 7 引入 logger；保持 fallback UI 简洁
+
+## 2026-03-10 14:11:27 CST
+- 当前阶段：execute (CE-001)
+- 完成事项：完成 CE-001 Task 8（基础 logger：src/core/logger.ts；支持 debug/info/warn/error；通过 VITE_LOG_LEVEL 控制；ErrorBoundary componentDidCatch 里 logger.error 记录 error+componentStack）
+- 对应 task / issue：CE-001 / Task 8 / ISS-20260310-003
+- 验收：npm run check 通过
+- commit hash：f1fe066
+- 下一步：CE-002（进入下一 CE 前先确认 queue-manifest 顺序与依赖）
+- 风险 / 阻塞：VITE_LOG_LEVEL 默认 info；避免在 logger 内引入复杂依赖
