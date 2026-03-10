@@ -281,3 +281,11 @@
 - 相关 commits：ab6acaf, b72d903, f726824, 0d49cab, 40d5407
 - 下一步：按 queue-manifest 进入 CE-005（nodes/childrenMap 转换层）
 - 风险 / 阻塞：codex 在 Task2 SIGTERM，已手工落地；其余无
+
+## 2026-03-10 15:55:02 CST
+- 当前阶段：execute-prep (CE-005)
+- 完成事项：生成 CE-005 执行 runbook（nodes/childrenMap 纯函数操作层，拆成 5 个可提交小任务）
+- 对应 task / issue：CE-005 / ISS-20260310-005
+- commit hash：150360e
+- 下一步：CE-005 Task 1（empty document factory + root 初始化）
+- 风险 / 阻塞：codex runbook 生成 SIGTERM，已人工落盘
