@@ -114,3 +114,11 @@
 - commit hash：08cebd0
 - 下一步：CE-001 Task 5（测试基线：Vitest + React Testing Library 最小用例）
 - 风险 / 阻塞：`rg` 不存在导致我无法用 ripgrep 快速审阅，但不影响执行；需防止 format:check 扫到 docs 大文件
+
+## 2026-03-10 13:37:36 CST
+- 当前阶段：execute (CE-001)
+- 完成事项：完成 CE-001 Task 5（Vitest + RTL + jsdom 测试基线；新增最小交互测试；scripts: test/test:watch），已提交
+- 对应 task / issue：CE-001 / Task 5 / ISS-20260310-003
+- commit hash：f68f747
+- 下一步：CE-001 Task 6（错误边界 + 基础 logger）或按 runbook 顺序推进下一任务
+- 风险 / 阻塞：tsconfig typecheck 与测试全局类型需隔离；已通过 exclude 规避 app typecheck 受测试文件影响
