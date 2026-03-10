@@ -219,3 +219,11 @@
 - 相关 commits：6ccae4d, b4171d9, b2dae4d, 46c8312, 0f6c99e
 - 下一步：按 queue-manifest 进入 CE-003（若队列顺序不同则按 manifest 修正）
 - 风险 / 阻塞：无
+
+## 2026-03-10 14:50:57 CST
+- 当前阶段：execute-prep (CE-004)
+- 完成事项：生成 CE-004 执行 runbook（核心类型与 DTO，拆成 5 个可提交小任务）
+- 对应 task / issue：CE-004 / ISS-20260310-004
+- commit hash：0807190
+- 下一步：CE-004 Task 1（core id types）
+- 风险 / 阻塞：codex 生成 runbook 两次 SIGTERM，已改为人工落盘；后续实现仍可继续用 codex
