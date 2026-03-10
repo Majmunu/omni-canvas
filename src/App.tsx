@@ -1,20 +1,14 @@
-import { useAppStore } from './store/appStore'
-
-function App() {
-  const counter = useAppStore((state) => state.counter)
-  const inc = useAppStore((state) => state.inc)
-
+function EditorShell() {
   return (
-    <main>
-      <h1>Zero Code Canvas Explore</h1>
-      <p>
-        Counter: <span data-testid="counter">{counter}</span>
-      </p>
-      <button type="button" onClick={inc}>
-        +1
-      </button>
+    <main data-testid="editor-shell" aria-label="Editor shell">
+      <h1>Editor Shell</h1>
+      <p>Canvas workspace scaffolding will land here in CE-002 Task 2.</p>
     </main>
   )
+}
+
+function App() {
+  return <EditorShell />
 }
 
 export default App

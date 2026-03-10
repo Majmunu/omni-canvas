@@ -1,15 +1,15 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import App from './App'
 
 describe('App', () => {
-  it('increments counter when clicking +1', () => {
+  it('renders the editor shell entry point', () => {
     render(<App />)
 
-    const counter = screen.getByTestId('counter')
-    expect(counter).toHaveTextContent('0')
-
-    fireEvent.click(screen.getByRole('button', { name: '+1' }))
-    expect(counter).toHaveTextContent('1')
+    expect(screen.getByTestId('editor-shell')).toHaveAttribute('aria-label', 'Editor shell')
+    expect(screen.getByRole('heading', { name: 'Editor Shell' })).toBeVisible()
+    expect(
+      screen.getByText('Canvas workspace scaffolding will land here in CE-002 Task 2.')
+    ).toBeVisible()
   })
 })
