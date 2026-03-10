@@ -254,3 +254,12 @@
 - commit hash：f726824
 - 下一步：CE-004 Task 4（定义 SavedDocument）
 - 风险 / 阻塞：无
+
+## 2026-03-10 15:01:30 CST
+- 当前阶段：execute (CE-004)
+- 完成事项：完成 CE-004 Task 4（定义 SavedDocument/RuntimeSchema：不记录 viewport/platform/device/selection；history 留给 CE-008）
+- 对应 task / issue：CE-004 / Task 4 / ISS-20260310-004
+- 验收：npm run typecheck 通过
+- commit hash：0d49cab
+- 下一步：CE-004 Task 5（最小 asserts + re-export，尽量跑 npm run check）
+- 风险 / 阻塞：无
