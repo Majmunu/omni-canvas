@@ -314,3 +314,12 @@
 - 验收：npm run check 通过
 - commit hash：74a1eaa
 - 备注：保持 Task 2 语义不变，仅格式化
+
+## 2026-03-10 16:06:52 CST
+- 当前阶段：execute (CE-005)
+- 完成事项：完成 CE-005 Task 3（addNode/removeNode：仅操作 nodes+childrenMap；removeNode 为子树删除；补 vitest 覆盖）
+- 对应 task / issue：CE-005 / Task 3 / ISS-20260310-005
+- 验收：npm run check 通过
+- commit hash：280eb6b
+- 下一步：CE-005 Task 4（moveNode）
+- 风险 / 阻塞：无
