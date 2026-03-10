@@ -1,10 +1,19 @@
-function EditorShell() {
+import { useEditorStore } from './editor/store'
+import { selectRootId } from './editor/store'
+
+function EditorShell(props: { debugRootId?: string }) {
+  const { debugRootId } = props
+
   return (
     <main
       className="editor-shell"
       data-testid="editor-shell"
       aria-labelledby="editor-workspace-title"
     >
+      <p aria-label="Editor Debug RootId" data-testid="editor-debug-rootid">
+        RootId: {debugRootId ?? '(none)'}
+      </p>
+
       <header
         className="editor-shell__topbar"
         data-testid="editor-topbar"
@@ -68,7 +77,9 @@ function EditorShell() {
 }
 
 function App() {
-  return <EditorShell />
+  const rootId = useEditorStore(selectRootId)
+
+  return <EditorShell debugRootId={rootId} />
 }
 
 export default App
