@@ -1,17 +1,23 @@
 function EditorShell() {
   return (
     <main className="editor-shell" data-testid="editor-shell" aria-label="Editor shell">
-      <header className="editor-topbar" data-testid="editor-topbar" aria-label="Editor top bar">
+      <header
+        className="editor-shell__topbar"
+        data-testid="editor-topbar"
+        aria-label="Editor top bar"
+      >
         <div>
-          <p className="editor-eyebrow">Canvas Editor</p>
+          <p className="editor-shell__eyebrow">Canvas Editor</p>
           <h1>Editor Workspace</h1>
         </div>
-        <p className="editor-copy">Top bar placeholder for project context and global actions.</p>
+        <p className="editor-shell__copy">
+          Top bar placeholder for project context and global actions.
+        </p>
       </header>
 
-      <div className="editor-body">
+      <div className="editor-shell__body">
         <aside
-          className="editor-panel"
+          className="editor-shell__panel editor-shell__panel--left"
           data-testid="editor-left-panel"
           aria-label="Editor left panel"
         >
@@ -20,7 +26,7 @@ function EditorShell() {
         </aside>
 
         <section
-          className="editor-canvas-area"
+          className="editor-shell__canvas"
           data-testid="editor-canvas-area"
           aria-label="Editor canvas area"
         >
@@ -29,7 +35,7 @@ function EditorShell() {
         </section>
 
         <aside
-          className="editor-panel"
+          className="editor-shell__panel editor-shell__panel--right"
           data-testid="editor-right-panel"
           aria-label="Editor right panel"
         >
@@ -41,7 +47,7 @@ function EditorShell() {
       </div>
 
       <footer
-        className="editor-status-bar"
+        className="editor-shell__statusbar"
         data-testid="editor-status-bar"
         aria-label="Editor status bar"
       >

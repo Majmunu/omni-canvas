@@ -1,7 +1,13 @@
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
-  min-height: 100vh;
-  background: #f3f4f6;
+  background: #e5e7eb;
   color: #111827;
   font-family:
     system-ui,
@@ -11,84 +17,140 @@ body {
     sans-serif;
 }
 
-#root {
-  min-height: 100vh;
-}
-
-main {
-  padding: 24px;
-}
-
-.editor-shell {
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 16px;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-.editor-topbar,
-.editor-panel,
-.editor-canvas-area,
-.editor-status-bar {
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  background: #ffffff;
-}
-
-.editor-topbar,
-.editor-status-bar {
-  padding: 16px 20px;
-}
-
-.editor-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.editor-body {
+.editor-shell {
+  --editor-shell-gap: 16px;
+  --editor-shell-panel-min: 220px;
+  --editor-shell-panel-max: 320px;
+  --editor-shell-topbar-height: 88px;
+  --editor-shell-statusbar-height: 72px;
+  --editor-shell-stack-breakpoint: 900px;
+  min-height: 100vh;
+  height: 100%;
+  padding: 16px;
   display: grid;
-  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr) minmax(180px, 240px);
-  gap: 16px;
+  grid-template-rows:
+    var(--editor-shell-topbar-height)
+    minmax(0, 1fr)
+    var(--editor-shell-statusbar-height);
+  gap: var(--editor-shell-gap);
+  overflow: hidden;
+}
+
+.editor-shell__topbar,
+.editor-shell__panel,
+.editor-shell__canvas,
+.editor-shell__statusbar {
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  background: #ffffff;
   min-height: 0;
 }
 
-.editor-panel,
-.editor-canvas-area {
-  padding: 20px;
+.editor-shell__topbar,
+.editor-shell__statusbar,
+.editor-shell__panel,
+.editor-shell__canvas {
+  overflow: auto;
 }
 
-.editor-canvas-area {
-  min-height: 320px;
+.editor-shell__topbar,
+.editor-shell__statusbar {
+  padding: 16px 20px;
 }
 
-.editor-status-bar {
+.editor-shell__topbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
 }
 
-.editor-eyebrow {
+.editor-shell__body {
+  min-height: 0;
+  display: grid;
+  grid-template-columns:
+    minmax(var(--editor-shell-panel-min), var(--editor-shell-panel-max))
+    minmax(0, 1fr)
+    minmax(var(--editor-shell-panel-min), var(--editor-shell-panel-max));
+  gap: var(--editor-shell-gap);
+  overflow: hidden;
+}
+
+.editor-shell__panel,
+.editor-shell__canvas {
+  padding: 20px;
+}
+
+.editor-shell__canvas {
+  min-width: 0;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+.editor-shell__statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.editor-shell__eyebrow {
   margin: 0 0 8px;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #4b5563;
+  color: #475569;
 }
 
-.editor-copy,
-.editor-panel p,
-.editor-canvas-area p,
-.editor-status-bar span {
+.editor-shell__copy,
+.editor-shell__panel p,
+.editor-shell__canvas p,
+.editor-shell__statusbar span {
   margin: 0;
-  color: #4b5563;
+  color: #475569;
 }
 
-.editor-topbar h1,
-.editor-panel h2,
-.editor-canvas-area h2 {
+.editor-shell__topbar h1,
+.editor-shell__panel h2,
+.editor-shell__canvas h2 {
   margin: 0 0 8px;
+}
+
+@media (max-width: 900px) {
+  .editor-shell {
+    padding: 12px;
+    grid-template-rows:
+      var(--editor-shell-topbar-height)
+      minmax(0, 1fr)
+      minmax(96px, auto);
+  }
+
+  .editor-shell__body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(240px, 1.4fr) repeat(2, minmax(160px, 1fr));
+  }
+
+  .editor-shell__canvas {
+    order: 1;
+  }
+
+  .editor-shell__panel--left {
+    order: 2;
+  }
+
+  .editor-shell__panel--right {
+    order: 3;
+  }
+
+  .editor-shell__topbar,
+  .editor-shell__statusbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
