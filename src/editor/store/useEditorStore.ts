@@ -1,12 +1,18 @@
 import { create } from 'zustand'
 
 import { createEmptyDocument } from '../../core/model/document'
+import { createOperationActions } from './actions'
 import type { EditorStoreState } from './types'
 
 export const useEditorStore = create<EditorStoreState>((set, get) => {
   const initialDocument = createEmptyDocument()
 
   return {
+    ...createOperationActions({
+      set,
+      get,
+    }),
+
     // Document layer
     document: initialDocument,
     loadDocument: (document) =>
