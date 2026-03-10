@@ -199,3 +199,33 @@ export function moveNode(document: SavedDocument, args: MoveNodeArgs): SavedDocu
     },
   }
 }
+
+export interface ReplacePropsArgs {
+  nodeId: NodeId
+  props: Record<string, unknown>
+}
+
+/**
+ * Replaces a node's props entirely.
+ *
+ * P0: keep it simple and explicit; patch/merge can be added later.
+ */
+export function replaceProps(document: SavedDocument, args: ReplacePropsArgs): SavedDocument {
+  const { nodeId, props } = args
+
+  const existing = document.nodes[nodeId]
+  if (!existing) {
+    throw new Error(`replaceProps: nodeId ${nodeId} must exist in nodes`)
+  }
+
+  return {
+    ...document,
+    nodes: {
+      ...document.nodes,
+      [nodeId]: {
+        ...existing,
+        props,
+      },
+    },
+  }
+}
