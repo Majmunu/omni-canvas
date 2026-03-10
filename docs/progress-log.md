@@ -157,3 +157,11 @@
 - commit hash：2aa5db0
 - 下一步：CE-002（编辑器 App Shell 五区布局）
 - 风险 / 阻塞：无（注意 .ccw/.workflow/.tmp_* 不入 git）
+
+## 2026-03-10 14:21:37 CST
+- 当前阶段：execute-prep (CE-002)
+- 完成事项：生成 CE-002 执行 runbook（五区布局拆成 5 个可提交小任务）
+- 对应 task / issue：CE-002 / ISS-20260310-006
+- commit hash：4896f92
+- 下一步：CE-002 Task 1（用编辑器壳体替换现有示例入口）
+- 风险 / 阻塞：dev server 可能 EPERM，统一以 npm run check 验收
