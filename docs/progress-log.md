@@ -130,3 +130,12 @@
 - commit hash：5c2554d
 - 下一步：CE-001 Task 7（ErrorBoundary）
 - 风险 / 阻塞：注意不提交 .ccw/ .workflow/ .tmp_*；CI node 版本与 package-lock 需一致
+
+## 2026-03-10 14:06:25 CST
+- 当前阶段：execute (CE-001)
+- 完成事项：完成 CE-001 Task 7（全局 ErrorBoundary：新增 src/components/ErrorBoundary.tsx；在 src/main.tsx 包裹 App；fallback 展示错误与重试）
+- 对应 task / issue：CE-001 / Task 7 / ISS-20260310-003
+- 验收：npm run check 通过（format:check + lint + test + typecheck + build）
+- commit hash：3b4120f
+- 下一步：CE-001 Task 8（基础 logger，与 ErrorBoundary 联动）
+- 风险 / 阻塞：不要在 Task 7 引入 logger；保持 fallback UI 简洁
