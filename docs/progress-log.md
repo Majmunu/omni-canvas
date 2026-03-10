@@ -66,3 +66,11 @@
 - commit hash：N/A（运行态不提交；映射表为临时文件）
 - 下一步：补齐 CE-001/CE-004/CE-009 的 issue id 映射，生成 docs/issue-registry.md（CE->ISS/SOL 对照表，便于人工审阅），并提交；然后按 docs/queue-manifest.md 生成 docs/queue-runbook.md 并进入第一条执行（CE-001）
 - 风险 / 阻塞：ccw issue queue add 在非交互环境可能报错；我们将用 docs/queue-manifest.md 作为唯一队列真相，必要时绕开 queue add
+
+## 2026-03-10 10:50:14 CST
+- 当前阶段：issue-import
+- 完成事项：生成并提交 docs/issue-registry.md（CE -> ISS/SOL 对照表）
+- 对应 task / issue：issue-import / registry
+- commit hash：eb79d2f
+- 下一步：进入执行阶段（CE-001）。先用 CCW 执行器为 CE-001 生成可执行 task 列表（solution tasks），再排执行队列并开始实现
+- 风险 / 阻塞：执行阶段要强制小步提交；任何偏离 backlog 需先收敛
