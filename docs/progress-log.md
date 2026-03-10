@@ -122,3 +122,11 @@
 - commit hash：f68f747
 - 下一步：CE-001 Task 6（错误边界 + 基础 logger）或按 runbook 顺序推进下一任务
 - 风险 / 阻塞：tsconfig typecheck 与测试全局类型需隔离；已通过 exclude 规避 app typecheck 受测试文件影响
+
+## 2026-03-10 14:00:19 CST
+- 当前阶段：execute (CE-001)
+- 完成事项：完成 CE-001 Task 6（CI quality gate baseline：新增 .github/workflows/ci.yml；新增 npm run check 聚合 format:check+lint+test+typecheck+build，并在 CI 里执行）
+- 对应 task / issue：CE-001 / Task 6 / ISS-20260310-003
+- commit hash：5c2554d
+- 下一步：CE-001 Task 7（ErrorBoundary）
+- 风险 / 阻塞：注意不提交 .ccw/ .workflow/ .tmp_*；CI node 版本与 package-lock 需一致
