@@ -5,8 +5,10 @@ CE-001 Task 1 工程基线文档，用于统一目录骨架和协作约定。
 ## 包管理器约定
 
 - 固定使用 `npm`（仓库包含 `package-lock.json`）。
+- 固定运行时版本：`Node.js 24.14.0`、`npm 11.9.0`。
 - 安装依赖：`npm install`
 - 本地开发：`npm run dev`
+- 质量门禁：`npm run check`
 
 ## 目录骨架
 
