@@ -329,3 +329,9 @@
 - 修正事项：修复 ops.ts 的 lint/ts 问题（prefer-const；移除无效 eslint-disable；替换 Array#toSpliced 以兼容当前 TS/lib 配置）
 - 验收：npm run check 通过
 - commit hash：06ef183
+
+## 2026-03-10 16:25 Asia/Shanghai
+- 当前阶段：execute (CE-005)
+- 准备进入：CE-005 Task 4（moveNode：同父 reorder / 跨父移动 + 禁止移入子树 + 最小 tests）
+- 当前 HEAD：5461b65
+- 验收基线：npm run check 通过（16:19 已复跑）
