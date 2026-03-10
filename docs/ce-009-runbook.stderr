@@ -1,0 +1,6 @@
+[CCW_EXEC_ID=ce-009-runbook-20260310-2142]
+[SPEC_LOAD] No matching specs found
+[QUEUE] docs/queue-manifest.md -> Stage A linear mainline step 6 = CE-009
+[SCOPE] Registry types + registration protocol + query API only; renderer explicitly excluded
+[PATH_DECISION] Use src/core/registry/** to keep registry reusable by CE-010/CE-011/CE-013 without editor-layer coupling
+[OUTPUT] Wrote executable runbook to docs/ce-009-runbook.md
