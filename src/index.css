@@ -1,3 +1,7 @@
+:root {
+  --editor-breakpoint: 900px;
+}
+
 html,
 body,
 #root {
@@ -29,7 +33,7 @@ body {
   --editor-shell-panel-max: 320px;
   --editor-shell-topbar-height: 88px;
   --editor-shell-statusbar-height: 72px;
-  --editor-shell-stack-breakpoint: 900px;
+  --editor-shell-stack-breakpoint: var(--editor-breakpoint);
   min-height: 100vh;
   height: 100%;
   padding: 16px;

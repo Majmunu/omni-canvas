@@ -8,6 +8,7 @@ function EditorShell() {
       <header
         className="editor-shell__topbar"
         data-testid="editor-topbar"
+        data-scroll-region="true"
         aria-label="Editor top bar"
       >
         <div>
@@ -23,6 +24,7 @@ function EditorShell() {
         <aside
           className="editor-shell__panel editor-shell__panel--left"
           data-testid="editor-left-panel"
+          data-scroll-region="true"
           aria-labelledby="editor-left-panel-title"
         >
           <h2 id="editor-left-panel-title">Left Panel</h2>
@@ -32,6 +34,7 @@ function EditorShell() {
         <section
           className="editor-shell__canvas"
           data-testid="editor-canvas"
+          data-scroll-region="true"
           aria-labelledby="editor-canvas-title"
         >
           <h2 id="editor-canvas-title">Canvas Area</h2>
@@ -41,6 +44,7 @@ function EditorShell() {
         <aside
           className="editor-shell__panel editor-shell__panel--right"
           data-testid="editor-right-panel"
+          data-scroll-region="true"
           aria-labelledby="editor-right-panel-title"
         >
           <h2 id="editor-right-panel-title">Right Panel</h2>
@@ -53,6 +57,7 @@ function EditorShell() {
       <footer
         className="editor-shell__statusbar"
         data-testid="editor-statusbar"
+        data-scroll-region="true"
         aria-label="Editor status bar"
       >
         <strong>Status Bar</strong>

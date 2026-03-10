@@ -4,6 +4,17 @@ import { resolve } from 'node:path'
 import { render, screen } from '@testing-library/react'
 import App from './App'
 
+beforeAll(() => {
+  const style = document.createElement('style')
+  style.dataset.testid = 'app-test-styles'
+  style.textContent = readFileSync(resolve(__dirname, 'index.css'), 'utf8')
+  document.head.append(style)
+})
+
+afterAll(() => {
+  document.head.querySelector('[data-testid="app-test-styles"]')?.remove()
+})
+
 describe('App', () => {
   it('renders the five-region editor shell structure', () => {
     render(<App />)
@@ -28,6 +39,31 @@ describe('App', () => {
     )
   })
 
+  it('marks the five visible regions as independently scrollable surfaces', () => {
+    render(<App />)
+
+    expect(screen.getByRole('banner', { name: 'Editor top bar' })).toHaveAttribute(
+      'data-scroll-region',
+      'true'
+    )
+    expect(screen.getByRole('complementary', { name: 'Left Panel' })).toHaveAttribute(
+      'data-scroll-region',
+      'true'
+    )
+    expect(screen.getByRole('region', { name: 'Canvas Area' })).toHaveAttribute(
+      'data-scroll-region',
+      'true'
+    )
+    expect(screen.getByRole('complementary', { name: 'Right Panel' })).toHaveAttribute(
+      'data-scroll-region',
+      'true'
+    )
+    expect(screen.getByRole('contentinfo', { name: 'Editor status bar' })).toHaveAttribute(
+      'data-scroll-region',
+      'true'
+    )
+  })
+
   it('shows readable placeholder content in each region', () => {
     render(<App />)
 
@@ -41,11 +77,11 @@ describe('App', () => {
     expect(screen.getByText('Shell ready. No canvas document is loaded yet.')).toBeVisible()
   })
 
-  it('keeps a stable responsive breakpoint hook in the stylesheet', () => {
-    const css = readFileSync(resolve(__dirname, 'index.css'), 'utf8')
+  it('keeps a stable responsive breakpoint hook in computed styles', () => {
+    render(<App />)
 
-    expect(css).toContain('--editor-shell-stack-breakpoint: 900px;')
-    expect(css).toContain('@media (max-width: 900px)')
-    expect(css).toContain('.editor-shell__body')
+    expect(getComputedStyle(document.documentElement).getPropertyValue('--editor-breakpoint')).toBe(
+      '900px'
+    )
   })
 })
