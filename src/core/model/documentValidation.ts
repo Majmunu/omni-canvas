@@ -27,9 +27,7 @@ export function validateDocument(document: SavedDocument): DocumentValidationRes
 
     for (const childId of children) {
       if (!document.nodes[childId]) {
-        errors.push(
-          `childrenMap references missing childId ${childId} (parentId ${parentIdRaw})`,
-        )
+        errors.push(`childrenMap references missing childId ${childId} (parentId ${parentIdRaw})`)
       }
     }
   }
