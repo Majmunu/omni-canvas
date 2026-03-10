@@ -58,10 +58,27 @@ export interface HistorySliceActions {
   markDocumentChanged: () => void
 }
 
+export interface OperationSliceActions {
+  addNode: (args: {
+    parentId: NodeId
+    node: import('../../core/dto/node').NodeDTO
+    index?: number
+  }) => void
+  moveNode: (args: {
+    nodeId: NodeId
+    fromParentId: NodeId
+    toParentId: NodeId
+    toIndex: number
+  }) => void
+  removeNode: (args: { nodeId: NodeId }) => void
+  replaceProps: (args: { nodeId: NodeId; props: Record<string, unknown> }) => void
+}
+
 export type EditorStoreState = DocumentSliceState &
   DocumentSliceActions &
   RuntimeSliceState &
   RuntimeSliceActions &
+  OperationSliceActions &
   UISliceState &
   UISliceActions &
   SelectionSliceState &

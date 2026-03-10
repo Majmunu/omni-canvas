@@ -7,6 +7,8 @@ export const useEditorStore = create<EditorStoreState>((set, get) => {
   const initialDocument = createEmptyDocument()
 
   return {
+    ...require('./actions').createOperationActions({ set, get }),
+
     // Document layer
     document: initialDocument,
     loadDocument: (document) =>
