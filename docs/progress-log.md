@@ -323,3 +323,9 @@
 - commit hash：280eb6b
 - 下一步：CE-005 Task 4（moveNode）
 - 风险 / 阻塞：无
+
+## 2026-03-10 16:08:30 CST
+- 当前阶段：execute (CE-005)
+- 修正事项：修复 ops.ts 的 lint/ts 问题（prefer-const；移除无效 eslint-disable；替换 Array#toSpliced 以兼容当前 TS/lib 配置）
+- 验收：npm run check 通过
+- commit hash：06ef183
