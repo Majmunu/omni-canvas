@@ -148,3 +148,12 @@
 - commit hash：f1fe066
 - 下一步：CE-002（进入下一 CE 前先确认 queue-manifest 顺序与依赖）
 - 风险 / 阻塞：VITE_LOG_LEVEL 默认 info；避免在 logger 内引入复杂依赖
+
+## 2026-03-10 14:19:14 CST
+- 当前阶段：execute (CE-001)
+- 完成事项：补齐 Task 8 与 ErrorBoundary 的联动（componentDidCatch 内调用 logger.error 记录 componentStack）
+- 对应 task / issue：CE-001 / Task 8 / ISS-20260310-003
+- 验收：npm run check 通过
+- commit hash：2aa5db0
+- 下一步：CE-002（编辑器 App Shell 五区布局）
+- 风险 / 阻塞：无（注意 .ccw/.workflow/.tmp_* 不入 git）
