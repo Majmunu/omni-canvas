@@ -361,3 +361,11 @@
 - 相关 commits：150360e, 2fd031e, 158fbf7, 280eb6b, 06ef183, 3f5a6f2, 3d04729
 - 下一步：按 queue-manifest 进入 CE-006（Zustand store skeleton）
 - 风险 / 阻塞：Codex 多次 SIGTERM，已按“Codex→Gemini→人工”策略降级；当前无阻塞
+
+## 2026-03-10 16:56:11 CST
+- 当前阶段：execute-prep (CE-006)
+- 完成事项：生成 CE-006 执行 runbook（EditorStore 六层结构，拆成 5 个可提交小任务）
+- 对应 task / issue：CE-006 / ISS-20260310-009
+- commit hash：7c89885
+- 下一步：CE-006 Task 1（scaffold store contracts/types）
+- 风险 / 阻塞：无
