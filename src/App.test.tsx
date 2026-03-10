@@ -8,21 +8,24 @@ describe('App', () => {
   it('renders the five-region editor shell structure', () => {
     render(<App />)
 
-    const shell = screen.getByRole('main', { name: 'Editor shell' })
+    const shell = screen.getByRole('main', { name: 'Editor Workspace' })
     expect(shell).toBe(screen.getByTestId('editor-shell'))
-    expect(shell).toHaveClass('editor-shell')
 
-    expect(screen.getByTestId('editor-topbar')).toHaveClass('editor-shell__topbar')
-    expect(screen.getByLabelText('Editor left panel')).toHaveClass(
-      'editor-shell__panel',
-      'editor-shell__panel--left'
+    expect(screen.getByRole('banner', { name: 'Editor top bar' })).toBe(
+      screen.getByTestId('editor-topbar')
     )
-    expect(screen.getByLabelText('Editor canvas area')).toHaveClass('editor-shell__canvas')
-    expect(screen.getByLabelText('Editor right panel')).toHaveClass(
-      'editor-shell__panel',
-      'editor-shell__panel--right'
+    expect(screen.getByRole('complementary', { name: 'Left Panel' })).toBe(
+      screen.getByTestId('editor-left-panel')
     )
-    expect(screen.getByTestId('editor-status-bar')).toHaveClass('editor-shell__statusbar')
+    expect(screen.getByRole('region', { name: 'Canvas Area' })).toBe(
+      screen.getByTestId('editor-canvas')
+    )
+    expect(screen.getByRole('complementary', { name: 'Right Panel' })).toBe(
+      screen.getByTestId('editor-right-panel')
+    )
+    expect(screen.getByRole('contentinfo', { name: 'Editor status bar' })).toBe(
+      screen.getByTestId('editor-statusbar')
+    )
   })
 
   it('shows readable placeholder content in each region', () => {
@@ -32,6 +35,9 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: 'Left Panel' })).toBeVisible()
     expect(screen.getByRole('heading', { name: 'Canvas Area' })).toBeVisible()
     expect(screen.getByRole('heading', { name: 'Right Panel' })).toBeVisible()
+    expect(
+      screen.getByText('Top bar placeholder for project context and global actions.')
+    ).toBeVisible()
     expect(screen.getByText('Shell ready. No canvas document is loaded yet.')).toBeVisible()
   })
 
