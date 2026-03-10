@@ -50,3 +50,11 @@
 - commit hash：3426858
 - 下一步：以“1 CE = 1 issue”创建 CE issues（ccw issue create）并为每个 issue 创建 solution+bind；按 queue-manifest 线性序列入队
 - 风险/阻塞：ccw issue queue add 可能触发交互提示导致报错，需探索非交互参数或直接落库后校验
+
+## 2026-03-10 10:40:15 CST
+- 当前阶段：issue-import-sample
+- 完成事项：按“1 CE = 1 issue”成功创建并绑定 3 个样例 CE issues（CE-001/CE-004/CE-009）
+- 对应 task / issue：CE-001, CE-004, CE-009（issue v3）
+- commit hash：N/A（运行态不提交，仅 docs 记录）
+- 下一步：批量导入剩余 31 个 CE issues；然后按 queue-manifest 线性序列把主线 CE 加入队列
+- 风险 / 阻塞：queue add 可能触发交互提示导致报错；必要时仅用 docs/queue-manifest 驱动 next/done，不依赖 queue add
