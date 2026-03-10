@@ -113,9 +113,7 @@ export function removeNode(document: SavedDocument, args: RemoveNodeArgs): Saved
   }
 
   // also remove any references to deleted nodes that might exist (best-effort)
-  for (const [parentId, children] of Object.entries(nextChildrenMap) as Array<
-    [NodeId, NodeId[]]
-  >) {
+  for (const [parentId, children] of Object.entries(nextChildrenMap) as Array<[NodeId, NodeId[]]>) {
     nextChildrenMap[parentId] = children.filter((id) => !toDelete.has(id))
   }
 
