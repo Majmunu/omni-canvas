@@ -1,9 +1,10 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { useEditorStore } from './editor/store'
 import { selectDocument, selectRootId } from './editor/store'
 
 import { createBuiltinComponentRegistry } from './core/registry'
+import { asNodeId } from './core/types/id'
 import { CanvasRoot } from './renderer/dom'
 import { OverlayLayer } from './renderer/overlay/OverlayLayer'
 
@@ -98,6 +99,16 @@ function App() {
   const rootId = useEditorStore(selectRootId)
   const document = useEditorStore(selectDocument)
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      useEditorStore.getState().setSelectedNodeId(null)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
   const registry = useMemo(() => createBuiltinComponentRegistry(), [])
 
   return (
@@ -117,6 +128,18 @@ function App() {
           position: 'relative',
           width: '100%',
           minHeight: 240,
+        }}
+        onClick={(event) => {
+          const target = event.target as HTMLElement | null
+          const hit = target?.closest?.('[data-node-id]') as HTMLElement | null
+          const hitNodeId = hit?.getAttribute?.('data-node-id')
+
+          if (hitNodeId) {
+            useEditorStore.getState().setSelectedNodeId(asNodeId(hitNodeId))
+            return
+          }
+
+          useEditorStore.getState().setSelectedNodeId(null)
         }}
       >
         <CanvasRoot document={document} registry={registry} />

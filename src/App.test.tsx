@@ -104,9 +104,31 @@ describe('App', () => {
 
     fireEvent.click(rootButton as HTMLElement)
 
-    expect(screen.getByText(/Selected:/)).toBeVisible()
-    expect(screen.getByText(/Type:/)).toBeVisible()
+    const inspector = screen.getByRole('region', { name: 'Inspector' })
+
+    expect(inspector).toHaveTextContent('Selected:')
+    expect(inspector).toHaveTextContent('Type:')
     expect(screen.getByLabelText('Selected node props')).toBeVisible()
+  })
+
+  it('selects by clicking canvas and clears selection', () => {
+    render(<App />)
+
+    // select via canvas click
+    fireEvent.click(screen.getByTestId('node-root'))
+    expect(screen.getByLabelText('Selection hint')).toBeVisible()
+
+    // clear via blank click
+    fireEvent.click(screen.getByTestId('canvas-stage'))
+    expect(screen.queryByLabelText('Selection hint')).toBeNull()
+
+    // select again
+    fireEvent.click(screen.getByTestId('node-root'))
+    expect(screen.getByLabelText('Selection hint')).toBeVisible()
+
+    // clear via Escape
+    fireEvent.keyDown(window, { key: 'Escape' })
+    expect(screen.queryByLabelText('Selection hint')).toBeNull()
   })
 
   it('keeps a stable responsive breakpoint hook in computed styles', () => {
