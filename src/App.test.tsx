@@ -1,7 +1,7 @@
 import React from 'react'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import App from './App'
 
 beforeAll(() => {
@@ -86,10 +86,27 @@ describe('App', () => {
     // Layers tree renders
     expect(screen.getByRole('list', { name: 'Layers tree' })).toBeVisible()
 
+    // Inspector empty state
+    expect(screen.getByText('Select a node to inspect its properties.')).toBeVisible()
+
     expect(screen.getAllByRole('button').length).toBeGreaterThan(0)
 
     // CE-014: overlay layer scaffold
     expect(screen.getByTestId('overlay-layer')).toBeInTheDocument()
+  })
+
+  it('wires layers selection to inspector output', () => {
+    render(<App />)
+
+    const layersTree = screen.getByRole('list', { name: 'Layers tree' })
+    const rootButton = layersTree.querySelector('button')
+    expect(rootButton).not.toBeNull()
+
+    fireEvent.click(rootButton as HTMLElement)
+
+    expect(screen.getByText(/Selected:/)).toBeVisible()
+    expect(screen.getByText(/Type:/)).toBeVisible()
+    expect(screen.getByLabelText('Selected node props')).toBeVisible()
   })
 
   it('keeps a stable responsive breakpoint hook in computed styles', () => {
