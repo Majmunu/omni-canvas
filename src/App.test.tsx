@@ -74,7 +74,11 @@ describe('App', () => {
     expect(
       screen.getByText('Top bar placeholder for project context and global actions.')
     ).toBeVisible()
-    expect(screen.getByText('Shell ready. No canvas document is loaded yet.')).toBeVisible()
+
+    // CE-015: panels scaffold
+    expect(screen.getByRole('region', { name: 'Palette' })).toBeVisible()
+    expect(screen.getByRole('region', { name: 'Layers' })).toBeVisible()
+    expect(screen.getByRole('region', { name: 'Inspector' })).toBeVisible()
 
     // CE-014: overlay layer scaffold
     expect(screen.getByTestId('overlay-layer')).toBeInTheDocument()

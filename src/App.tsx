@@ -7,6 +7,8 @@ import { createBuiltinComponentRegistry } from './core/registry'
 import { CanvasRoot } from './renderer/dom'
 import { OverlayLayer } from './renderer/overlay/OverlayLayer'
 
+import { InspectorPanel, LayersPanel, PalettePanel } from './editor/panels'
+
 function EditorShell(props: { debugRootId?: string; children?: React.ReactNode }) {
   const { debugRootId, children } = props
 
@@ -43,7 +45,7 @@ function EditorShell(props: { debugRootId?: string; children?: React.ReactNode }
           aria-labelledby="editor-left-panel-title"
         >
           <h2 id="editor-left-panel-title">Left Panel</h2>
-          <p>Palette and navigation placeholders will attach here in a later task.</p>
+          <PalettePanel />
         </aside>
 
         <section
@@ -65,9 +67,8 @@ function EditorShell(props: { debugRootId?: string; children?: React.ReactNode }
           aria-labelledby="editor-right-panel-title"
         >
           <h2 id="editor-right-panel-title">Right Panel</h2>
-          <p>
-            Inspector and detail placeholders will land here after the shell baseline is stable.
-          </p>
+          <LayersPanel />
+          <InspectorPanel />
         </aside>
       </div>
 
