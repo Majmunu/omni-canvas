@@ -82,6 +82,10 @@ describe('App', () => {
 
     // Palette list (at least some builtin components)
     expect(screen.getByRole('list', { name: 'Palette components' })).toBeVisible()
+
+    // Layers tree renders
+    expect(screen.getByRole('list', { name: 'Layers tree' })).toBeVisible()
+
     expect(screen.getAllByRole('button').length).toBeGreaterThan(0)
 
     // CE-014: overlay layer scaffold
