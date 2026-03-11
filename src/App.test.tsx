@@ -131,6 +131,19 @@ describe('App', () => {
     expect(screen.queryByLabelText('Selection hint')).toBeNull()
   })
 
+  it('adds a box node by clicking palette and renders it on canvas', () => {
+    render(<App />)
+
+    fireEvent.click(screen.getByRole('button', { name: 'Box' }))
+
+    // canvas should render a box view
+    expect(screen.getByTestId('node-box')).toBeVisible()
+
+    // inspector should select the newly created node
+    const inspector = screen.getByRole('region', { name: 'Inspector' })
+    expect(inspector).toHaveTextContent('Selected:')
+  })
+
   it('keeps a stable responsive breakpoint hook in computed styles', () => {
     render(<App />)
 
