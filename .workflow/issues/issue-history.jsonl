@@ -12,3 +12,4 @@
 {"at":"2026-03-11T01:52:02.838Z","kind":"status","id":"ISS-20260310-015","from":"executing","to":"completed","note":"CE-013 DOM renderer implemented. Commit: 5b07521; npm run check passed."}
 {"at":"2026-03-11T01:56:03.957Z","kind":"status","id":"ISS-20260310-016","from":"planned","to":"executing","note":"Start CE-014 overlay layer (depends on CE-013)."}
 {"at":"2026-03-11T01:59:25.882Z","kind":"status","id":"ISS-20260310-016","from":"executing","to":"completed","note":"CE-014 overlay scaffold implemented. Commit: c5e93f1; npm run check passed."}
+{"timestamp":"2026-03-11T05:29:58.336Z","kind":"issue.status","issue_id":"ISS-20260310-017","from":"planned","to":"completed","note":"CE-015 palette/layers/inspector wiring complete (scaffold+palette list+layers tree+selection wiring)"}

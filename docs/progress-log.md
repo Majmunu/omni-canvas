@@ -430,3 +430,65 @@
 - commit hash：5c3ffd8
 - 下一步：CE-009 Task 1（定义 registry 核心 types/契约与目录边界）
 - 风险 / 阻塞：无
+
+## 2026-03-11 11:30 CST
+- 当前阶段：execute-prep (CE-015)
+- 完成事项：生成并提交 CE-015 执行 runbook（Palette/Layers/Inspector 接线拆分为 5 个小任务）
+- 对应 task / issue：CE-015 / ISS-20260310-017
+- commit hash：ad5a638
+- 下一步：CE-015 Task 1（面板骨架落地并挂载到五区布局）
+- 风险 / 阻塞：无
+
+## 2026-03-11 11:44 CST
+- 当前阶段：execute (CE-015)
+- 完成事项：完成 CE-015 Task 1（Palette/Layers/Inspector panel 组件骨架 + 接入 App + 测试钩子）
+- 对应 task / issue：CE-015 / Task 1 / ISS-20260310-017
+- 验收：npm run check 通过
+- commit hash：7ae99ff
+- 下一步：CE-015 Task 2（Palette 接入 registry，渲染组件列表）
+- 风险 / 阻塞：无
+
+## 2026-03-11 11:48 CST
+- 当前阶段：execute (CE-015)
+- 完成事项：完成 CE-015 Task 2（Palette 接入内置 registry 并渲染组件列表；补测试断言）
+- 对应 task / issue：CE-015 / Task 2 / ISS-20260310-017
+- 验收：npm run check 通过
+- commit hash：0a277a8
+- 下一步：CE-015 Task 3（Layers 基于 document(nodes+childrenMap) 渲染层级树）
+- 风险 / 阻塞：无
+
+## 2026-03-11 11:53 CST
+- 当前阶段：execute (CE-015)
+- 完成事项：完成 CE-015 Task 3（新增 buildLayerTree 纯函数；Layers panel 渲染树；补测试断言）
+- 对应 task / issue：CE-015 / Task 3 / ISS-20260310-017
+- 验收：npm run check 通过
+- commit hash：2c3aa94
+- 下一步：CE-015 Task 4（selection 联动：Layers 点击选中，Inspector 响应）
+- 风险 / 阻塞：无
+
+## 2026-03-11 11:55 CST
+- 当前阶段：execute (CE-015)
+- 完成事项：完成 CE-015 Task 4（selection 联动：Layers 写 selectedNodeId + aria-current；Inspector 展示选中 node 信息；新增 RTL 用例）
+- 对应 task / issue：CE-015 / Task 4 / ISS-20260310-017
+- 验收：npm run check 通过
+- commit hash：aedeb8d
+- 下一步：CE-015 Task 5（收敛样式/测试与 issue 完结，进入 CE-017）
+- 风险 / 阻塞：浏览器扩展（Immersive Translate）注入的全局 button 样式会造成 UI 观感混乱；建议在隐身/禁扩展环境验收。
+
+## 2026-03-11 12:05 CST
+- 当前阶段：execute (CE-015)
+- 完成事项：补齐 CE-015 最小面板样式（editor-panel 基础排版、button hover/选中态），便于肉眼验收
+- 对应 task / issue：CE-015 / Task 5 / ISS-20260310-017
+- 验收：npm run check 通过
+- commit hash：8b55968
+- 下一步：标记 CE-015 issue 为 completed；按 queue-manifest 进入 CE-017（选择系统）
+- 风险 / 阻塞：无
+
+## 2026-03-11 13:29 CST
+- 当前阶段：execute (CE-015)
+- 完成事项：CE-015 Task 1-5 全部完成；已更新 workflow issue 状态为 completed（ISS-20260310-017）
+- 对应 task / issue：CE-015 / ISS-20260310-017
+- 验收：npm run check 通过（以 main 当前状态为准）
+- 相关 commits：ad5a638, 7ae99ff, 0a277a8, 2c3aa94, aedeb8d, 8b55968
+- 下一步：进入 CE-017（选择系统）
+- 风险 / 阻塞：无
