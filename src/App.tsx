@@ -102,7 +102,7 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return
-      useEditorStore.getState().setSelectedNodeId(null)
+      useEditorStore.getState().clearSelection()
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -139,7 +139,7 @@ function App() {
             return
           }
 
-          useEditorStore.getState().setSelectedNodeId(null)
+          useEditorStore.getState().clearSelection()
         }}
       >
         <CanvasRoot document={document} registry={registry} />
