@@ -1,6 +1,8 @@
 import { useEditorStore } from '../../editor/store'
 import { selectSelectedNodeId } from '../../editor/store'
 
+import { SelectedNodeOutline } from './SelectedNodeOutline'
+
 export function OverlayLayer(props: { children?: React.ReactNode }) {
   const { children } = props
   const selectedNodeId = useEditorStore(selectSelectedNodeId)
@@ -32,6 +34,10 @@ export function OverlayLayer(props: { children?: React.ReactNode }) {
           Selected: {selectedNodeId}
         </div>
       ) : null}
+
+      {/* P0 outline (viewport-independent, fixed positioning) */}
+      <SelectedNodeOutline />
+
       {children}
     </div>
   )
