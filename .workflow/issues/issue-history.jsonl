@@ -7,3 +7,4 @@
 {"at":"2026-03-11T01:37:31.492Z","kind":"status","id":"ISS-20260310-012","from":"planned","to":"executing","note":"Start CE-010 implementation (single-line). Runbook: docs/ce-010-runbook.md"}
 {"at":"2026-03-11T01:43:24.297Z","kind":"status","id":"ISS-20260310-012","from":"executing","to":"completed","note":"CE-010 unknown fallback implemented. Commit: 01850c4; npm run check passed."}
 {"at":"2026-03-11T01:43:55.258Z","kind":"status","id":"ISS-20260310-013","from":"planned","to":"executing","note":"Start CE-011 implementation (register MVP builtin components)."}
+{"at":"2026-03-11T01:45:16.006Z","kind":"status","id":"ISS-20260310-013","from":"executing","to":"completed","note":"CE-011 builtin registry implemented. Commit: 3544254; npm run check passed."}
