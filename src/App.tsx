@@ -1,8 +1,13 @@
-import { useEditorStore } from './editor/store'
-import { selectRootId } from './editor/store'
+import { useMemo } from 'react'
 
-function EditorShell(props: { debugRootId?: string }) {
-  const { debugRootId } = props
+import { useEditorStore } from './editor/store'
+import { selectDocument, selectRootId } from './editor/store'
+
+import { createBuiltinComponentRegistry } from './core/registry'
+import { CanvasRoot } from './renderer/dom'
+
+function EditorShell(props: { debugRootId?: string; children?: React.ReactNode }) {
+  const { debugRootId, children } = props
 
   return (
     <main
@@ -47,7 +52,9 @@ function EditorShell(props: { debugRootId?: string }) {
           aria-labelledby="editor-canvas-title"
         >
           <h2 id="editor-canvas-title">Canvas Area</h2>
-          <p>Renderer is not connected yet. Use this area as the empty canvas stage.</p>
+          {children ?? (
+            <p>Renderer is not connected yet. Use this area as the empty canvas stage.</p>
+          )}
         </section>
 
         <aside
@@ -78,8 +85,15 @@ function EditorShell(props: { debugRootId?: string }) {
 
 function App() {
   const rootId = useEditorStore(selectRootId)
+  const document = useEditorStore(selectDocument)
 
-  return <EditorShell debugRootId={rootId} />
+  const registry = useMemo(() => createBuiltinComponentRegistry(), [])
+
+  return (
+    <EditorShell debugRootId={rootId}>
+      <CanvasRoot document={document} registry={registry} />
+    </EditorShell>
+  )
 }
 
 export default App
