@@ -75,6 +75,9 @@ describe('App', () => {
       screen.getByText('Top bar placeholder for project context and global actions.')
     ).toBeVisible()
     expect(screen.getByText('Shell ready. No canvas document is loaded yet.')).toBeVisible()
+
+    // CE-014: overlay layer scaffold
+    expect(screen.getByTestId('overlay-layer')).toBeInTheDocument()
   })
 
   it('keeps a stable responsive breakpoint hook in computed styles', () => {

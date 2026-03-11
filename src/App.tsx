@@ -5,6 +5,7 @@ import { selectDocument, selectRootId } from './editor/store'
 
 import { createBuiltinComponentRegistry } from './core/registry'
 import { CanvasRoot } from './renderer/dom'
+import { OverlayLayer } from './renderer/overlay/OverlayLayer'
 
 function EditorShell(props: { debugRootId?: string; children?: React.ReactNode }) {
   const { debugRootId, children } = props
@@ -91,7 +92,17 @@ function App() {
 
   return (
     <EditorShell debugRootId={rootId}>
-      <CanvasRoot document={document} registry={registry} />
+      <div
+        data-testid="canvas-stage"
+        style={{
+          position: 'relative',
+          width: '100%',
+          minHeight: 240,
+        }}
+      >
+        <CanvasRoot document={document} registry={registry} />
+        <OverlayLayer />
+      </div>
     </EditorShell>
   )
 }
