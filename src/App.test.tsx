@@ -80,6 +80,10 @@ describe('App', () => {
     expect(screen.getByRole('region', { name: 'Layers' })).toBeVisible()
     expect(screen.getByRole('region', { name: 'Inspector' })).toBeVisible()
 
+    // Palette list (at least some builtin components)
+    expect(screen.getByRole('list', { name: 'Palette components' })).toBeVisible()
+    expect(screen.getAllByRole('button').length).toBeGreaterThan(0)
+
     // CE-014: overlay layer scaffold
     expect(screen.getByTestId('overlay-layer')).toBeInTheDocument()
   })

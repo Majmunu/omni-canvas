@@ -9,8 +9,13 @@ import { OverlayLayer } from './renderer/overlay/OverlayLayer'
 
 import { InspectorPanel, LayersPanel, PalettePanel } from './editor/panels'
 
-function EditorShell(props: { debugRootId?: string; children?: React.ReactNode }) {
-  const { debugRootId, children } = props
+function EditorShell(props: {
+  debugRootId?: string
+  children?: React.ReactNode
+  leftPanel?: React.ReactNode
+  rightPanel?: React.ReactNode
+}) {
+  const { debugRootId, children, leftPanel, rightPanel } = props
 
   return (
     <main
@@ -45,7 +50,7 @@ function EditorShell(props: { debugRootId?: string; children?: React.ReactNode }
           aria-labelledby="editor-left-panel-title"
         >
           <h2 id="editor-left-panel-title">Left Panel</h2>
-          <PalettePanel />
+          {leftPanel ?? <PalettePanel />}
         </aside>
 
         <section
@@ -67,8 +72,12 @@ function EditorShell(props: { debugRootId?: string; children?: React.ReactNode }
           aria-labelledby="editor-right-panel-title"
         >
           <h2 id="editor-right-panel-title">Right Panel</h2>
-          <LayersPanel />
-          <InspectorPanel />
+          {rightPanel ?? (
+            <>
+              <LayersPanel />
+              <InspectorPanel />
+            </>
+          )}
         </aside>
       </div>
 
@@ -92,7 +101,16 @@ function App() {
   const registry = useMemo(() => createBuiltinComponentRegistry(), [])
 
   return (
-    <EditorShell debugRootId={rootId}>
+    <EditorShell
+      debugRootId={rootId}
+      leftPanel={<PalettePanel />}
+      rightPanel={
+        <>
+          <LayersPanel />
+          <InspectorPanel />
+        </>
+      }
+    >
       <div
         data-testid="canvas-stage"
         style={{
