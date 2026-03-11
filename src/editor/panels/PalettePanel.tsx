@@ -27,12 +27,22 @@ export function PalettePanel() {
                   const parentId = selectedNodeId ?? document.rootId
 
                   const nodeId = newNodeId(item.displayName.toLowerCase())
+                  const baseProps = item.defaultProps ?? {}
+                  const createdCount = (document.childrenMap[parentId] ?? []).length
+
+                  const nextProps: Record<string, unknown> = { ...baseProps }
+
+                  // P0 visibility/layout: if the component supports width/height, give it a readable
+                  // position offset so newly created nodes don't all stack in the top-left.
+                  if (typeof nextProps.x !== 'number') nextProps.x = 24 + createdCount * 16
+                  if (typeof nextProps.y !== 'number') nextProps.y = 24 + createdCount * 16
+
                   addNode({
                     parentId,
                     node: {
                       id: nodeId,
                       type: item.componentId,
-                      props: item.defaultProps ?? {},
+                      props: nextProps,
                     },
                   })
                   setSelectedNodeId(nodeId)
