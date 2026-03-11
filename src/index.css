@@ -126,6 +126,56 @@ body {
   margin: 0 0 8px;
 }
 
+/*
+  CE-015 panel primitives
+  Keep styling minimal; do not introduce a full design system.
+*/
+.editor-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editor-panel + .editor-panel {
+  margin-top: 16px;
+}
+
+.editor-panel__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.editor-panel__title {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.editor-panel__body ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.editor-panel__body button {
+  width: 100%;
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+
+.editor-panel__body button:hover {
+  background: #f1f5f9;
+}
+
+.editor-panel__body button[aria-current='true'] {
+  border-color: #94a3b8;
+  background: #e2e8f0;
+}
+
 @media (max-width: 900px) {
   .editor-shell {
     padding: 12px;
